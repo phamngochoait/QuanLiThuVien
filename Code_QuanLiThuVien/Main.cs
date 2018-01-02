@@ -101,10 +101,6 @@ namespace WindowsFormsApplication1
         }
 
         private void Main_Load(object sender, EventArgs e)
-        {
-            //this.Size = new System.Drawing.Size(1300, 850);
-        }
-
-     
+      
     }
 }
