@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1
 {
     class AccessData
     {
-         //Thuoc tinh 
+         //Thuoc Tinh 
         protected string m_connectionString; 
         protected SqlConnection connection; 
         protected SqlDataAdapter da = null; 
@@ -19,7 +19,7 @@ namespace WindowsFormsApplication1
         { 
             m_connectionString = "Data Source=ZHANGLI\\SQLEXPRESS;Initial Catalog=D:\\C#\\BAITAP\\QLTV\\QLTV\\QUANLYTHUVIEN.MDF;Integrated Security=True"; 
         } 
-        //Ket noi 
+        //Ket Noi 
         public void connect() 
         { 
             try 
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
                 //Application.Exit(); 
             } 
         } 
-        //Tat ket noi 
+        //Ngat Ket Noi 
         public void disconnect() 
         { 
             try 
