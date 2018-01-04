@@ -141,7 +141,15 @@ namespace WindowsFormsApplication1
             }
         }
 
-
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult traloi = MessageBox.Show("B?n có mu?n thoát không ?", "Thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (traloi == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+        
             
      }
 }
