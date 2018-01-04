@@ -15,6 +15,25 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+        private void QuanLyThe_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.The' table. You can move, or remove it, as needed.
+            this.theTableAdapter.Fill(this.quanLyThuVienDataSet1.The);
+            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.DocGia' table. You can move, or remove it, as needed.
+            this.docGiaTableAdapter.Fill(this.quanLyThuVienDataSet1.DocGia);
+            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.DocGia' table. You can move, or remove it, as needed.
+            this.docGiaTableAdapter.Fill(this.quanLyThuVienDataSet1.DocGia);
+            // TODO: This line of code loads data into the 'quanLyThuVienDataSet.DocGia' table. You can move, or remove it, as needed.
+            
+            // TODO: This line of code loads data into the 'quanLyThuVienDataSet.The' table. You can move, or remove it, as needed.
+            string sql1 = "Select *from The";
+            dataGridViewThe.DataSource = ac.TaoBang(sql1);
+            Xoa();
+            //Hiển thị mã độc giả
+            cbxMaDocGiaThe.DataSource = LayMaDocGia();
+            cbxMaDocGiaThe.DisplayMember = "MaDocGia";
+            
+        }
 
     }
 }
