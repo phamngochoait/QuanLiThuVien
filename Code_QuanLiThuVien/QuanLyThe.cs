@@ -34,6 +34,20 @@ namespace WindowsFormsApplication1
             cbxMaDocGiaThe.DisplayMember = "MaDocGia";
             
         }
+        AccessData ac = new AccessData();
+        public static DataTable LayMaDocGia()
+        {
+            string sql;
+            sql = "Select MaDocGia from DocGia ";
+            AccessData db = new AccessData();
+            DataTable dt;
+            dt = db.TaoBang(sql);
+            return dt;
+        }
+        private void Xoa()
+        {
+            this.txtMaThe.Clear();
 
+        }
     }
 }
