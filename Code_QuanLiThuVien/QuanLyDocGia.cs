@@ -30,8 +30,6 @@ namespace WindowsFormsApplication1
        
         private void QuanLyDocGia_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.DocGia' table. You can move, or remove it, as needed.
-            this.docGiaTableAdapter1.Fill(this.quanLyThuVienDataSet1.DocGia);
             string sql = "Select *from DocGia";
             dataGridViewDocGia.DataSource = ac.TaoBang(sql);
             Xoa();

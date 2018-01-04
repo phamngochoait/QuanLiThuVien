@@ -18,10 +18,6 @@ namespace WindowsFormsApplication1
 
         private void QuanLyTacGia_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.TacGia' table. You can move, or remove it, as needed.
-            this.tacGiaTableAdapter1.Fill(this.quanLyThuVienDataSet1.TacGia);
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet.TacGia' table. You can move, or remove it, as needed.
-            this.tacGiaTableAdapter.Fill(this.quanLyThuVienDataSet.TacGia);
           
             string sql = "Select *from TacGia";
             dataGridViewTacGia.DataSource = ac.TaoBang(sql);
