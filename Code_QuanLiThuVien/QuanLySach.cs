@@ -157,6 +157,42 @@ namespace WindowsFormsApplication1
             txtTenNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[1].Value.ToString();
             txtDiaChiNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[2].Value.ToString();
         }        
+        int dongsach;
+        private void dataGridViewSach_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dongsach = e.RowIndex;
+            txtMaSach.Text = dataGridViewSach.Rows[dongsach].Cells[0].Value.ToString();
+            txtTenSach.Text = dataGridViewSach.Rows[dongsach].Cells[1].Value.ToString();
+            cbxNamXuatBan.Text = dataGridViewSach.Rows[dongsach].Cells[2].Value.ToString();
+            txtSoBanSach.Text = dataGridViewSach.Rows[dongsach].Cells[3].Value.ToString();
+            txtSoTrangSach.Text = dataGridViewSach.Rows[dongsach].Cells[4].Value.ToString();
+            txtGiaSach.Text = dataGridViewSach.Rows[dongsach].Cells[5].Value.ToString();
+            txtSoTap.Text = dataGridViewSach.Rows[dongsach].Cells[6].Value.ToString();
+            cbxKhoSach.Text = dataGridViewSach.Rows[dongsach].Cells[7].Value.ToString();
+            cbxTinhTrangSach.Text = dataGridViewSach.Rows[dongsach].Cells[8].Value.ToString();
+            cbxNgonNgu.Text = dataGridViewSach.Rows[dongsach].Cells[9].Value.ToString();
+            
+        }
+
+        private void btnThemSach_Click(object sender, EventArgs e)
+        {
+            //L?y mã tác gi?
+            string tacgia = "Select MaTacGia from TacGia where TenTacGia=N'" + cbxTenTacGiaSach.Text.ToString() + "'";
+            string MaTG = Convert.ToString(ac.executeScalar(tacgia));
+            //L?y mã th? lo?i
+            string theloai = "Select MaTheLoai from TheLoai where TenTheLoai=N'" + cbxTenTheLoaiSach.Text.ToString()+ "'";
+            string MaTL = Convert.ToString(ac.executeScalar(theloai));
+            //L?y mã NXB
+            string nxb = "Select MaNhaXuaBan from NhaXuatBan where TenNhaXuatBan=N'" + cbxTenNXBSach.Text.ToString() + "'";
+            string MaNXB = Convert.ToString(ac.executeScalar(nxb));
+            
+           
+            string sql = "Insert into Sach values('" + txtMaSach.Text + "',N'" + txtTenSach.Text + "',"
+            + cbxNamXuatBan.Text.ToString() + "," + txtSoBanSach.Text + "," + txtSoTrangSach.Text + ","
+            + txtGiaSach.Text + "," + txtSoTap.Text + ",'" + cbxKhoSach.Text.ToString() + "',N'" + cbxTinhTrangSach.Text.ToString() + "',N'"
+            + cbxNgonNgu.Text.ToString() + "','" +MaTG+ "','"
+            + MaTL+ "','" + MaNXB + "')";
+
             
      }
 }
