@@ -11,5 +11,10 @@ namespace WindowsFormsApplication1
 {
     public partial class QuanLySach : Form
     {
+	public QuanLySach()
+        {
+            InitializeComponent();
+        }
+	
      }
 }
