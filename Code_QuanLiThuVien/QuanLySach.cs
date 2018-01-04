@@ -192,6 +192,26 @@ namespace WindowsFormsApplication1
             + txtGiaSach.Text + "," + txtSoTap.Text + ",'" + cbxKhoSach.Text.ToString() + "',N'" + cbxTinhTrangSach.Text.ToString() + "',N'"
             + cbxNgonNgu.Text.ToString() + "','" +MaTG+ "','"
             + MaTL+ "','" + MaNXB + "')";
+            if (txtMaSach.Text.Length != 0 && txtTenSach.Text.Length != 0)
+            {
+                try
+                {
+                    ac.ExcuteNonQuery(sql);
+                    string sql1 = "Select *from Sach";
+                    dataGridViewSach.DataSource = ac.TaoBang(sql1);
+                    XoaSach();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Mã sách dã t?n !", "Thêm L?i", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMaSach.Clear();
+                }
+            }
+            else
+                MessageBox.Show("Mã sách và tên sách không du?c d? tr?ng !", "Thêm L?i", MessageBoxButtons.OK, MessageBoxIcon.Warning);    
+            
+        }
 
             
      }
