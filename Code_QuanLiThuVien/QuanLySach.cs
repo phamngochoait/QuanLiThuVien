@@ -14,6 +14,8 @@ namespace WindowsFormsApplication1
 	public QuanLySach()
         {
             InitializeComponent();
+	    AccessData ac = new AccessData();
+	    
         }
 	
      }
