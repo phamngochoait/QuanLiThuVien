@@ -149,7 +149,14 @@ namespace WindowsFormsApplication1
                 this.Close();
             }
         }
-        
+        int dongNXB;
+        private void dataGridViewNXB_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dongNXB = e.RowIndex;
+            txtMaNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[0].Value.ToString();
+            txtTenNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[1].Value.ToString();
+            txtDiaChiNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[2].Value.ToString();
+        }        
             
      }
 }
