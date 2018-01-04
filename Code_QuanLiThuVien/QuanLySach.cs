@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,12 +11,12 @@ namespace WindowsFormsApplication1
 {
     public partial class QuanLySach : Form
     {
-	public QuanLySach()
+        public QuanLySach()
         {
             InitializeComponent();
         }
         AccessData ac = new AccessData();
-	private void QuanLySach_Load(object sender, EventArgs e)
+        private void QuanLySach_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.DocGia' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.Sach' table. You can move, or remove it, as needed.
@@ -36,14 +36,16 @@ namespace WindowsFormsApplication1
             // TODO: This line of code loads data into the 'quanLyThuVienDataSet.NhaXuatBan' table. You can move, or remove it, as needed.
             
             // TODO: This line of code loads data into the 'quanLyThuVienDataSet.TheLoai' table. You can move, or remove it, as needed.
-            //Th�m d? li?u v�o cboTinhTrangSach
-            this.cbxTinhTrangSach.Items.Add("T?t");
-            this.cbxTinhTrangSach.Items.Add("X?u");
-            this.cbxTinhTrangSach.Items.Add("B�nh Th??ng");
-            this.cbxTinhTrangSach.SelectedItem = "T?t";
+            
+
+            //Thêm dữ liệu vào cboTinhTrangSach
+            this.cbxTinhTrangSach.Items.Add("Tốt");
+            this.cbxTinhTrangSach.Items.Add("Xấu");
+            this.cbxTinhTrangSach.Items.Add("Bình Thường");
+            this.cbxTinhTrangSach.SelectedItem = "Tốt";
             this.cbxNamXuatBan.SelectedItem = "2010";
             this.cbxKhoSach.SelectedItem = "20X30";
-            this.cbxNgonNgu.SelectedItem = "Ti?ng vi?t";
+            this.cbxNgonNgu.SelectedItem = "Tiếng việt";
 
             string sql1 = "Select *from Sach";
             dataGridViewSach.DataSource = ac.TaoBang(sql1);
@@ -57,13 +59,13 @@ namespace WindowsFormsApplication1
             dataGridViewNXB.DataSource = ac.TaoBang(sql3);
             XoaNXB();
 
-            //l?y t�n t�c gi?
+            //lấy tên tác giả
             cbxTenTacGiaSach.DataSource = LayTenTacGia();
             cbxTenTacGiaSach.DisplayMember = "TenTacGia";
-            //L?y t�n th? lo?i
+            //Lấy tên thể loại
             cbxTenTheLoaiSach.DataSource = LayTenTheLoai();
             cbxTenTheLoaiSach.DisplayMember = "TenTheLoai";
-            //L?y t�n NXB
+            //Lấy tên NXB
             cbxTenNXBSach.DataSource = LayTenNXB();
             cbxTenNXBSach.DisplayMember = "TenNhaXuatBan";
 
@@ -116,6 +118,79 @@ namespace WindowsFormsApplication1
             txtGiaSach.Clear();
             txtSoTap.Clear();
         }
+
+        private void btnThemTheLoai_Click(object sender, EventArgs e)
+        {
+            string sql = "Insert into TheLoai values('" + txtMaTheLoai.Text + "',N'" + txtTenTheLoai.Text + "')";
+            try
+            {
+                ac.ExcuteNonQuery(sql);
+                string sql1 = "Select *from TheLoai";
+                dataGridViewTheLoai.DataSource = ac.TaoBang(sql1);
+                XoaTheLoai();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã tồn tại thể loại !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaTheLoai.Clear();
+                txtMaTheLoai.Focus();
+
+            }
+        }
+
+        private void btnSuaTheLoai_Click(object sender, EventArgs e)
+        {
+            string sql = "Update TheLoai set TenTheLoai = N'" + txtTenTheLoai.Text + "' where MaTheLoai='" + txtMaTheLoai.Text + "'";
+            ac.ExcuteNonQuery(sql);
+            string sql1 = "Select *from TheLoai";
+            dataGridViewTheLoai.DataSource = ac.TaoBang(sql1);
+            XoaTheLoai();
+        }
+
+        private void btnXoaTheLoai_Click(object sender, EventArgs e)
+        {
+
+            string sql = "Delete from TheLoai where MaTheLoai='" + txtMaTheLoai.Text + "'";
+            DialogResult traloi = MessageBox.Show("Bạn có chắc chắn xóa không ?", "Xóa Thể Loại", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi == DialogResult.Yes)
+            {
+                ac.ExcuteNonQuery(sql);
+                string sql1 = "Select *from TheLoai";
+                dataGridViewTheLoai.DataSource = ac.TaoBang(sql1);
+                XoaTheLoai();
+
+            }
+        }
+        int dongTL;
+        private void dataGridViewTheLoai_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            dongTL = e.RowIndex;
+            txtMaTheLoai.Text = dataGridViewTheLoai.Rows[dongTL].Cells[0].Value.ToString();
+            txtTenTheLoai.Text = dataGridViewTheLoai.Rows[dongTL].Cells[1].Value.ToString();
+        }
+
+        private void btnThemNXB_Click(object sender, EventArgs e)
+        {
+            string sql = "Insert into NhaXuatBan values('" + txtMaNXB.Text + "',N'" + txtTenNXB.Text + "',N'" + txtDiaChiNXB.Text + "','" + dateTimePicker1.Value.ToString() + "')";
+            try
+            {
+                ac.ExcuteNonQuery(sql);
+                string sql1 = "Select *from NhaXuatBan";
+                dataGridViewNXB.DataSource = ac.TaoBang(sql1);
+                XoaNXB();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Đã tồn tại thể loại !", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtMaNXB.Clear();
+                txtMaNXB.Focus();
+
+            }
+        }
+
         private void btnSuaNXB_Click(object sender, EventArgs e)
         {
             
@@ -130,7 +205,7 @@ namespace WindowsFormsApplication1
         {
             string sql1 = "Delete from NhaXuatBan where MaNhaXuaBan ='" + txtMaNXB.Text + "'";
             string sql2 = "Delete from Sach where MaNhaXuatBan='" + txtMaNXB.Text + "'";
-            DialogResult traloi = MessageBox.Show("B?n c� ch?c ch?n x�a kh�ng ?", "X�a Nh� Xu?t B?n", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult traloi = MessageBox.Show("Bạn có chắc chắn xóa không ?", "Xóa Nhà Xuất Bản", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (traloi == DialogResult.Yes)
             {
                 ac.ExcuteNonQuery(sql1);
@@ -143,7 +218,7 @@ namespace WindowsFormsApplication1
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            DialogResult traloi = MessageBox.Show("B?n c� mu?n tho�t kh�ng ?", "Tho�t", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult traloi = MessageBox.Show("Bạn có muốn thoát không ?", "Thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (traloi == DialogResult.OK)
             {
                 this.Close();
@@ -156,7 +231,7 @@ namespace WindowsFormsApplication1
             txtMaNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[0].Value.ToString();
             txtTenNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[1].Value.ToString();
             txtDiaChiNXB.Text = dataGridViewNXB.Rows[dongNXB].Cells[2].Value.ToString();
-        }        
+        }
         int dongsach;
         private void dataGridViewSach_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -176,13 +251,13 @@ namespace WindowsFormsApplication1
 
         private void btnThemSach_Click(object sender, EventArgs e)
         {
-            //L?y m� t�c gi?
+            //Lấy mã tác giả
             string tacgia = "Select MaTacGia from TacGia where TenTacGia=N'" + cbxTenTacGiaSach.Text.ToString() + "'";
             string MaTG = Convert.ToString(ac.executeScalar(tacgia));
-            //L?y m� th? lo?i
+            //Lấy mã thể loại
             string theloai = "Select MaTheLoai from TheLoai where TenTheLoai=N'" + cbxTenTheLoaiSach.Text.ToString()+ "'";
             string MaTL = Convert.ToString(ac.executeScalar(theloai));
-            //L?y m� NXB
+            //Lấy mã NXB
             string nxb = "Select MaNhaXuaBan from NhaXuatBan where TenNhaXuatBan=N'" + cbxTenNXBSach.Text.ToString() + "'";
             string MaNXB = Convert.ToString(ac.executeScalar(nxb));
             
@@ -192,6 +267,7 @@ namespace WindowsFormsApplication1
             + txtGiaSach.Text + "," + txtSoTap.Text + ",'" + cbxKhoSach.Text.ToString() + "',N'" + cbxTinhTrangSach.Text.ToString() + "',N'"
             + cbxNgonNgu.Text.ToString() + "','" +MaTG+ "','"
             + MaTL+ "','" + MaNXB + "')";
+
             if (txtMaSach.Text.Length != 0 && txtTenSach.Text.Length != 0)
             {
                 try
@@ -204,19 +280,19 @@ namespace WindowsFormsApplication1
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("M� s�ch d� t?n !", "Th�m L?i", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Mã sách đã tồn !", "Thêm Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtMaSach.Clear();
                 }
             }
             else
-                MessageBox.Show("M� s�ch v� t�n s�ch kh�ng du?c d? tr?ng !", "Th�m L?i", MessageBoxButtons.OK, MessageBoxIcon.Warning);    
+                MessageBox.Show("Mã sách và tên sách không được để trống !", "Thêm Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);    
             
         }
 
         private void btnXoaSach_Click(object sender, EventArgs e)
         {
             string sql = "Delete from Sach where MaSach = '" + txtMaSach.Text + "'";
-            DialogResult traloi = MessageBox.Show("B?n c� ch?c ch?n x�a kh�ng ?", "X�a S�ch", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult traloi = MessageBox.Show("Bạn có chắc chắn xóa không ?", "Xóa Sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (traloi == DialogResult.Yes)
             {
                 ac.ExcuteNonQuery(sql);
@@ -228,7 +304,7 @@ namespace WindowsFormsApplication1
 
         private void btnThoatSach_Click(object sender, EventArgs e)
         {
-            DialogResult traloi = MessageBox.Show("B?n c� mu?n tho�t kh�ng ?", "Tho�t", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult traloi = MessageBox.Show("Bạn có muốn thoát không ?", "Thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (traloi == DialogResult.OK)
             {
                 this.Close();
@@ -237,13 +313,13 @@ namespace WindowsFormsApplication1
 
         private void btnSuaSach_Click_1(object sender, EventArgs e)
         {
-            //L?y m� t�c gi?
+            //Lấy mã tác giả
             string tacgia = "Select MaTacGia from TacGia where TenTacGia=N'" + cbxTenTacGiaSach.Text.ToString() + "'";
             string MaTacGia = Convert.ToString(ac.executeScalar(tacgia));
-            //L?y m� th? lo?i
+            //Lấy mã thể loại
             string theloai = "Select MaTheLoai from TheLoai where TenTheLoai=N'" + cbxTenTheLoaiSach.Text.ToString() + "'";
             string MaTheLoai = Convert.ToString(ac.executeScalar(theloai));
-            //L?y m� NXB
+            //Lấy mã NXB
             string NXB = "Select MaNhaXuaBan from NhaXuatBan where TenNhaXuatBan=N'" + cbxTenNXBSach.Text.ToString() + "'";
             string MaNXB = Convert.ToString(ac.executeScalar(NXB));
             
@@ -259,15 +335,16 @@ namespace WindowsFormsApplication1
             XoaSach();
        
         }
+
         private void tabControl1_Click(object sender, EventArgs e)
         {
-            //l?y t�n t�c gi?
+            //lấy tên tác giả
             cbxTenTacGiaSach.DataSource = LayTenTacGia();
             cbxTenTacGiaSach.DisplayMember = "TenTacGia";
-            //L?y t�n th? lo?i
+            //Lấy tên thể loại
             cbxTenTheLoaiSach.DataSource = LayTenTheLoai();
             cbxTenTheLoaiSach.DisplayMember = "TenTheLoai";
-            //L?y t�n NXB
+            //Lấy tên NXB
             cbxTenNXBSach.DataSource = LayTenNXB();
             cbxTenNXBSach.DisplayMember = "TenNhaXuatBan";
         }
@@ -278,14 +355,6 @@ namespace WindowsFormsApplication1
         }
 
         private void txtSoBanSach_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void txtSoTrangSach_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
             {
@@ -316,6 +385,6 @@ namespace WindowsFormsApplication1
                 e.Handled = true;
             }
         }
-            
-     }
+
+    }
 }
