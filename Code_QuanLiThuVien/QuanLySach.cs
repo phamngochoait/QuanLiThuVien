@@ -213,6 +213,20 @@ namespace WindowsFormsApplication1
             
         }
 
+        private void btnXoaSach_Click(object sender, EventArgs e)
+        {
+            string sql = "Delete from Sach where MaSach = '" + txtMaSach.Text + "'";
+            DialogResult traloi = MessageBox.Show("B?n có ch?c ch?n xóa không ?", "Xóa Sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi == DialogResult.Yes)
+            {
+                ac.ExcuteNonQuery(sql);
+                string sql1 = "Select *from Sach";
+                dataGridViewSach.DataSource = ac.TaoBang(sql1);
+            }
+            XoaSach();
+        }
+
+
             
      }
 }
