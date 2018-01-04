@@ -235,6 +235,43 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void btnSuaSach_Click_1(object sender, EventArgs e)
+        {
+            //L?y mã tác gi?
+            string tacgia = "Select MaTacGia from TacGia where TenTacGia=N'" + cbxTenTacGiaSach.Text.ToString() + "'";
+            string MaTacGia = Convert.ToString(ac.executeScalar(tacgia));
+            //L?y mã th? lo?i
+            string theloai = "Select MaTheLoai from TheLoai where TenTheLoai=N'" + cbxTenTheLoaiSach.Text.ToString() + "'";
+            string MaTheLoai = Convert.ToString(ac.executeScalar(theloai));
+            //L?y mã NXB
+            string NXB = "Select MaNhaXuaBan from NhaXuatBan where TenNhaXuatBan=N'" + cbxTenNXBSach.Text.ToString() + "'";
+            string MaNXB = Convert.ToString(ac.executeScalar(NXB));
+            
+            string sql = "Update Sach set TenSach=N'" + txtTenSach.Text + "',NamXuatBan =" + cbxNamXuatBan.Text.ToString() + ",SoBanSach="
+            + txtSoBanSach.Text + ",SoTrangSach=" + txtSoTrangSach.Text + ",GiaSach = " + txtGiaSach.Text + ",SoTap="
+            + txtSoTap.Text + ",KhoSach ='" + cbxKhoSach.Text.ToString() + "',TinhTrangSach=N'" + cbxTinhTrangSach.Text.ToString() + "',NgonNgu=N'"
+            + cbxNgonNgu.Text.ToString() + "',MaTacGia='" +MaTacGia+ "',MaTheLoai='" + MaTheLoai + "',MaNhaXuatBan='"
+            + MaNXB + "' where MaSach ='" + txtMaSach.Text + "'";
+
+            ac.ExcuteNonQuery(sql);
+            string sql1 = "Select *from Sach";
+            dataGridViewSach.DataSource = ac.TaoBang(sql1);
+            XoaSach();
+       
+        }
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            //l?y tên tác gi?
+            cbxTenTacGiaSach.DataSource = LayTenTacGia();
+            cbxTenTacGiaSach.DisplayMember = "TenTacGia";
+            //L?y tên th? lo?i
+            cbxTenTheLoaiSach.DataSource = LayTenTheLoai();
+            cbxTenTheLoaiSach.DisplayMember = "TenTheLoai";
+            //L?y tên NXB
+            cbxTenNXBSach.DataSource = LayTenNXB();
+            cbxTenNXBSach.DisplayMember = "TenNhaXuatBan";
+        }
+
 
             
      }
