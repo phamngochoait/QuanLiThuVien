@@ -117,7 +117,7 @@ namespace WindowsFormsApplication1
 
             else
             {
-                MessageBox.Show("Chưa chọn giới tính !", "Lỗi rồi ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Chưa chọn giới tính !", "Lỗi ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -134,7 +134,7 @@ namespace WindowsFormsApplication1
         private void btnXoa_Click(object sender, EventArgs e)
         {
           string sql1 = "Delete from DocGia where MaDocGia ='" + txtMaDocGia.Text + "'";
-            DialogResult traloi = MessageBox.Show("Bạn có chắc chắn xóa không ?", "Xóa Độc Giả", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult traloi = MessageBox.Show("Bạn có muốn xóa không ?", "Xóa Độc Giả", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (traloi == DialogResult.Yes)
             {
                 ac.ExcuteNonQuery(sql1);
@@ -174,7 +174,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                MessageBox.Show("Chưa chọn giới tính !", "Lỗi rồi ", MessageBoxButtons.OK);
+                MessageBox.Show("Chưa chọn giới tính !", "Lỗi ", MessageBoxButtons.OK);
             }
         }
         
