@@ -28,6 +28,21 @@ namespace WindowsFormsApplication1
             string sql4 = "Select COUNT(*) from TheLoai";
             string sql5 = "Select COUNT(*) from NhaXuatBan";
             string sql6 = "Select COUNT(*) from PhieuYeuCau";
+		
+	    int a =Convert.ToInt32(ac.executeScalar(sql1));
+            int b = Convert.ToInt32(ac.executeScalar(sql2));
+            int c = Convert.ToInt32(ac.executeScalar(sql3));
+            int d = Convert.ToInt32(ac.executeScalar(sql4));
+            int f = Convert.ToInt32(ac.executeScalar(sql5));
+            int g = Convert.ToInt32(ac.executeScalar(sql6));
+            
+
+            labSoSach.Text += a;
+            labSoDocGia.Text += b;
+            labSoTacGia.Text += c;
+            labSoTL.Text += d;
+            labSoNXB.Text += f;
+            labChoMuon.Text += g;
 
 
    	  
