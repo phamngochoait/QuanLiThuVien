@@ -49,5 +49,15 @@ namespace WindowsFormsApplication1
             this.txtMaThe.Clear();
 
         }
+        int dong;
+        private void dataGridViewThe_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dong = e.RowIndex;
+            txtMaThe.Text = dataGridViewThe.Rows[dong].Cells[0].Value.ToString();
+            cbxMaDocGiaThe.Text = dataGridViewThe.Rows[dong].Cells[1].Value.ToString();
+            dateTimePicker1.Text = dataGridViewThe.Rows[dong].Cells[3].Value.ToString();
+            dateTimePicker2.Text = dataGridViewThe.Rows[dong].Cells[4].Value.ToString();
+        }
+
     }
 }
