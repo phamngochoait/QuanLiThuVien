@@ -116,6 +116,31 @@ namespace WindowsFormsApplication1
             txtGiaSach.Clear();
             txtSoTap.Clear();
         }
+        private void btnSuaNXB_Click(object sender, EventArgs e)
+        {
+            
+            string sql = "Update NhaXuatBan set TenNhaXuatBan =N'" + txtTenNXB.Text + "',DiaChi =N'" + txtDiaChiNXB.Text + "',NgayThanhLap='" + dateTimePicker1.Value.ToString() + "' where MaNhaXuaBan='" + txtMaNXB.Text + "'";
+            ac.ExcuteNonQuery(sql);
+            string sql1 = "Select *from NhaXuatBan";
+            dataGridViewNXB.DataSource = ac.TaoBang(sql1);
+            XoaNXB();
+        }
+
+        private void btnXoaNXB_Click(object sender, EventArgs e)
+        {
+            string sql1 = "Delete from NhaXuatBan where MaNhaXuaBan ='" + txtMaNXB.Text + "'";
+            string sql2 = "Delete from Sach where MaNhaXuatBan='" + txtMaNXB.Text + "'";
+            DialogResult traloi = MessageBox.Show("B?n có ch?c ch?n xóa không ?", "Xóa Nhà Xu?t B?n", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi == DialogResult.Yes)
+            {
+                ac.ExcuteNonQuery(sql1);
+                ac.ExcuteNonQuery(sql2);
+                string sql3 = "Select *from NhaXuatBan";
+                dataGridViewNXB.DataSource = ac.TaoBang(sql3);
+                XoaNXB();
+            }
+        }
+
 
             
      }
