@@ -285,6 +285,14 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private void txtSoTrangSach_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
 
             
      }
