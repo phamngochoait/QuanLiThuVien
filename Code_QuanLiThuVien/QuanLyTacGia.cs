@@ -80,7 +80,7 @@ namespace WindowsFormsApplication1
         {
             string sql = "Delete from TacGia where MaTacGia ='" + txtMaTacGia.Text + "'";
 
-            DialogResult traloi = MessageBox.Show("Bạn có chắc chắn xóa không ?", "Xóa Tác Giả", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult traloi = MessageBox.Show("Bạn có muốn xóa không ?", "Xóa Tác Giả", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (traloi == DialogResult.Yes)
             {
                 ac.ExcuteNonQuery(sql);
