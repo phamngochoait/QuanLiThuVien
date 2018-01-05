@@ -15,6 +15,10 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
-
+        AccessData ac = new AccessData();
+        private void Xoa()
+        {
+            this.txtSoPhieu.Clear();
+        }
     }
 }
