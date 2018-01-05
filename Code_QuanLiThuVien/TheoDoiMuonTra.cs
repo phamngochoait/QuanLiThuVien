@@ -139,7 +139,9 @@ namespace WindowsFormsApplication1
         }
         private void btnMuon_Click(object sender, EventArgs e)
         {
-            
+            //Lấy mã độc giả
+            string docgia = "Select MaDocGia from The where MaThe='" + cbxMaTheMuon.Text.ToString() + "'";
+            string MaDG = Convert.ToString(ac.executeScalar(docgia));
 	}  
                  
 
