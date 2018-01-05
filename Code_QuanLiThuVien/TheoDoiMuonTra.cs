@@ -128,6 +128,16 @@ namespace WindowsFormsApplication1
             cbxTinhTrangTra.SelectedItem = "Tốt";
             HienThi();
             Xoa();
+        }
+        int dong;
+        private void dataGridViewMuon_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dong = e.RowIndex;
+            txtSoPhieu.Text = dataGridViewMuon.Rows[dong].Cells[1].Value.ToString();
+            cbxMaSachMuon.Text = dataGridViewMuon.Rows[dong].Cells[3].Value.ToString();
             
+        }
+            
+
     }
 }
