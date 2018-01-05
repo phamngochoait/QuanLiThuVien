@@ -54,6 +54,14 @@ namespace WindowsFormsApplication1
             dt = db.TaoBang(sql);
             return dt;
         }
-
+        public static DataTable LayMaDocGia()
+        {
+            string sql;
+            sql = "Select MaDocGia from The ";
+            AccessData db = new AccessData();
+            DataTable dt;
+            dt = db.TaoBang(sql);
+            return dt;
+        }
     }
 }
