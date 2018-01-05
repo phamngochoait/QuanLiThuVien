@@ -125,5 +125,9 @@ namespace WindowsFormsApplication1
             //Lấy ngày hẹn trả đưa vào trả
             cbxNgayHenTraMuon.DataSource = LayNgayHenTra();
             cbxNgayHenTraMuon.DisplayMember = "NgayHenTra";
+            cbxTinhTrangTra.SelectedItem = "Tốt";
+            HienThi();
+            Xoa();
+            
     }
 }
