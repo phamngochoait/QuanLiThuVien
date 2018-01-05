@@ -61,3 +61,34 @@ namespace WindowsFormsApplication1
 
     }
 }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            //Lấy tên độc giả
+            string docgia="Select TenDocGia from DocGia where MaDocGia='"+cbxMaDocGiaThe.Text.ToString()+"'";
+            string TenDocGia = Convert.ToString(ac.executeScalar(docgia));
+
+            string sql = "Insert into The values('" + txtMaThe.Text + "','" + cbxMaDocGiaThe.Text.ToString() + "',N'"
+           +TenDocGia+ "','" + dateTimePicker1.Value.ToString() + "','"
+           + dateTimePicker2.Value.ToString() + "'," + nbSoSachDuocMuon.Value.ToString() + ")";
+            
+            if (txtMaThe.Text.Length != 0)
+            {
+                try
+                {
+                    ac.ExcuteNonQuery(sql);
+                    string sql1 = "Select *from The";
+                    dataGridViewThe.DataSource = ac.TaoBang(sql1);
+                    Xoa();
+
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Mã thẻ đã tồn !", "Thêm Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtMaThe.Clear();
+                }
+            }
+            else
+                MessageBox.Show("Mã thẻ và mã độc giả không được để trống !", "Thêm Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
