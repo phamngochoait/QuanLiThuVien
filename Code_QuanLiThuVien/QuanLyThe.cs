@@ -11,10 +11,11 @@ namespace WindowsFormsApplication1
 {
     public partial class QuanLyThe : Form
     {
-         public QuanLyThe()
+        public QuanLyThe()
         {
             InitializeComponent();
         }
+
         private void QuanLyThe_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.The' table. You can move, or remove it, as needed.
@@ -58,9 +59,6 @@ namespace WindowsFormsApplication1
             dateTimePicker1.Text = dataGridViewThe.Rows[dong].Cells[3].Value.ToString();
             dateTimePicker2.Text = dataGridViewThe.Rows[dong].Cells[4].Value.ToString();
         }
-
-    }
-}
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
@@ -116,3 +114,14 @@ namespace WindowsFormsApplication1
 
             }
         }
+
+        private void buttonX4_Click(object sender, EventArgs e)
+        {
+            DialogResult traloi = MessageBox.Show("Bạn có muốn thoát không ?", "Thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (traloi == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+    }
+}
