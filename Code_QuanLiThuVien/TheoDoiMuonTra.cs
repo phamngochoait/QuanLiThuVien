@@ -105,5 +105,12 @@ namespace WindowsFormsApplication1
             // TODO: This line of code loads data into the 'quanLyThuVienDataSet.Sach' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'quanLyThuVienDataSet.The' table. You can move, or remove it, as needed.     
 
+            //Lấy Mã Thẻ Độc giả đưa vào mượn
+            cbxMaTheMuon.DataSource = LayMaTheDocGia();
+            cbxMaTheMuon.DisplayMember = "MaThe";
+            //Lấy Mã Thẻ đã mượn để theo dõi trả
+            cbxMaTheTra.DataSource = LayMaTheMuon();
+            cbxMaTheTra.DisplayMember = "MaThe";
+           
     }
 }
