@@ -137,7 +137,11 @@ namespace WindowsFormsApplication1
             cbxMaSachMuon.Text = dataGridViewMuon.Rows[dong].Cells[3].Value.ToString();
             
         }
+        private void btnMuon_Click(object sender, EventArgs e)
+        {
             
+	}  
+                 
 
     }
 }
