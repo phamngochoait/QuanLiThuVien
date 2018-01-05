@@ -112,5 +112,9 @@ namespace WindowsFormsApplication1
             cbxMaTheTra.DataSource = LayMaTheMuon();
             cbxMaTheTra.DisplayMember = "MaThe";
            
+            //Lấy số phiếu
+            cbxSoPhieu.DataSource = LaySoPhieu();
+            cbxSoPhieu.DisplayMember = "SoPhieu";
+
     }
 }
