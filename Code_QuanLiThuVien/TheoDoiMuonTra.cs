@@ -11,6 +11,10 @@ namespace WindowsFormsApplication1
 {
     public partial class TheoDoiMuonTra : Form
     {
-        
+        public TheoDoiMuonTra()
+        {
+            InitializeComponent();
+        }
+
     }
 }
