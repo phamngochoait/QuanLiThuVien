@@ -116,5 +116,14 @@ namespace WindowsFormsApplication1
             cbxSoPhieu.DataSource = LaySoPhieu();
             cbxSoPhieu.DisplayMember = "SoPhieu";
 
+            //Lấy mã sách đưa vào mượn
+            cbxMaSachMuon.DataSource = LayMaSach();
+            cbxMaSachMuon.DisplayMember = "MaSach";
+            //Lấy tên Sách đưa vòa mượn
+            cbxTenSachMuon.DataSource = LayTenSach();
+            cbxTenSachMuon.DisplayMember = "TenSach";
+            //Lấy ngày hẹn trả đưa vào trả
+            cbxNgayHenTraMuon.DataSource = LayNgayHenTra();
+            cbxNgayHenTraMuon.DisplayMember = "NgayHenTra";
     }
 }
