@@ -36,6 +36,15 @@ namespace WindowsFormsApplication1
 
             return dt;
         }
+        public static DataTable LayMaTheDocGia()
+        {
+            string sql;
+            sql = "Select MaThe from The ";
+            AccessData db = new AccessData();
+            DataTable dt;
+            dt = db.TaoBang(sql);
+            return dt;
+        }
 
     }
 }
