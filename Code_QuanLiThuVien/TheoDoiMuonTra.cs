@@ -26,6 +26,16 @@ namespace WindowsFormsApplication1
             dataGridViewMuon.DataSource = ac.TaoBang(sql);
 
         }
+        public static DataTable LaySoPhieu()
+        {
+            string sql;
+            sql = "Select DISTINCT SoPhieu from PhieuYeuCau ";
+            AccessData db = new AccessData();
+            DataTable dt;
+            dt = db.TaoBang(sql);
+
+            return dt;
+        }
 
     }
 }
