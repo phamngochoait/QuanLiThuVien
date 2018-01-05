@@ -20,5 +20,12 @@ namespace WindowsFormsApplication1
         {
             this.txtSoPhieu.Clear();
         }
+        private void HienThi()
+        {
+            string sql = "Select *from PhieuYeuCau";
+            dataGridViewMuon.DataSource = ac.TaoBang(sql);
+
+        }
+
     }
 }
