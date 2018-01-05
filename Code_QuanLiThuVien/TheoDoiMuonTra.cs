@@ -116,5 +116,37 @@ namespace WindowsFormsApplication1
             cbxSoPhieu.DataSource = LaySoPhieu();
             cbxSoPhieu.DisplayMember = "SoPhieu";
 
+            //Lấy mã sách đưa vào mượn
+            cbxMaSachMuon.DataSource = LayMaSach();
+            cbxMaSachMuon.DisplayMember = "MaSach";
+            //Lấy tên Sách đưa vòa mượn
+            cbxTenSachMuon.DataSource = LayTenSach();
+            cbxTenSachMuon.DisplayMember = "TenSach";
+            //Lấy ngày hẹn trả đưa vào trả
+            cbxNgayHenTraMuon.DataSource = LayNgayHenTra();
+            cbxNgayHenTraMuon.DisplayMember = "NgayHenTra";
+            cbxTinhTrangTra.SelectedItem = "Tốt";
+            HienThi();
+            Xoa();
+        }
+        int dong;
+        private void dataGridViewMuon_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dong = e.RowIndex;
+            txtSoPhieu.Text = dataGridViewMuon.Rows[dong].Cells[1].Value.ToString();
+            cbxMaSachMuon.Text = dataGridViewMuon.Rows[dong].Cells[3].Value.ToString();
+            
+        }
+        private void btnMuon_Click(object sender, EventArgs e)
+        {
+            //Lấy mã độc giả
+            string docgia = "Select MaDocGia from The where MaThe='" + cbxMaTheMuon.Text.ToString() + "'";
+            string MaDG = Convert.ToString(ac.executeScalar(docgia));
+            //Lấy tên độc giả từ bảng độc giả
+            string docgia1 = "Select TenDocGia from DocGia where MaDocGia='" + MaDG + "'";
+            string TenDG = Convert.ToString(ac.executeScalar(docgia1));
+	}  
+                 
+
     }
 }
