@@ -92,3 +92,27 @@ namespace WindowsFormsApplication1
             else
                 MessageBox.Show("Mã thẻ và mã độc giả không được để trống !", "Thêm Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            string sql = "Update The set NgayCapThe='" + dateTimePicker1.Value.ToString() + "',NgayHetHan='"
+                + dateTimePicker2.Value.ToString() + "',SoSachDuocMuon='" + nbSoSachDuocMuon.Value.ToString() + "'where MaThe='" + txtMaThe.Text + "'";
+            ac.ExcuteNonQuery(sql);
+            string sql1 = "Select *from The";
+            dataGridViewThe.DataSource = ac.TaoBang(sql1);
+            Xoa();
+        }
+
+        private void buttonX3_Click(object sender, EventArgs e)
+        {
+            string sql = "Delete from The where MaThe='" + txtMaThe.Text + "'";
+            DialogResult traloi = MessageBox.Show("Bạn có chắc chắn xóa không ?", "Xóa Thẻ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (traloi == DialogResult.Yes)
+            {
+                ac.ExcuteNonQuery(sql);
+                string sql1 = "Select *from The";
+                dataGridViewThe.DataSource = ac.TaoBang(sql1);
+                Xoa();
+
+            }
+        }
