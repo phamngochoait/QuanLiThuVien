@@ -145,6 +145,9 @@ namespace WindowsFormsApplication1
             //Lấy tên độc giả từ bảng độc giả
             string docgia1 = "Select TenDocGia from DocGia where MaDocGia='" + MaDG + "'";
             string TenDG = Convert.ToString(ac.executeScalar(docgia1));
+            //Lấy mã tác giả
+            string tacgia="Select MaTacGia from Sach where MaSach='"+cbxMaSachMuon.Text.ToString()+"'";
+            string MaTG = Convert.ToString(ac.executeScalar(tacgia));
 	}  
                  
 
