@@ -81,5 +81,15 @@ namespace WindowsFormsApplication1
             dt = db.TaoBang(sql);
             return dt;
         }
+        public static DataTable LayNgayHenTra()
+        {
+            string sql;
+            sql = "Select NgayTra from PhieuYeuCau ";
+            AccessData db = new AccessData();
+            DataTable dt;
+            dt = db.TaoBang(sql);
+            return dt;
+        }
+
     }
 }
