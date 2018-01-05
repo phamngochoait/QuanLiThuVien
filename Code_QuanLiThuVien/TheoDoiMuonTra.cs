@@ -45,6 +45,15 @@ namespace WindowsFormsApplication1
             dt = db.TaoBang(sql);
             return dt;
         }
+        public static DataTable LayMaTheMuon()
+        {
+            string sql;
+            sql = "Select DISTINCT MaThe from PhieuYeuCau ";
+            AccessData db = new AccessData();
+            DataTable dt;
+            dt = db.TaoBang(sql);
+            return dt;
+        }
 
     }
 }
