@@ -39,3 +39,6 @@ E:\CongCuPhanMem\DoAnCC\1\QLthuvien\QLTV\obj\Debug\WindowsFormsApplication1.Thon
 E:\CongCuPhanMem\DoAnCC\1\QLthuvien\QLTV\obj\Debug\WindowsFormsApplication1.TimKiem.resources
 E:\CongCuPhanMem\DoAnCC\1\QLthuvien\QLTV\obj\Debug\QLTV.csproj.GenerateResource.Cache
 E:\CongCuPhanMem\DoAnCC\1\QLthuvien\QLTV\obj\Debug\QLTV.csprojResolveAssemblyReference.cache
+C:\Users\PC\Desktop\New\QuanLiThuVien\QLTV\QLTV\bin\Debug\QLTV.exe.config
+C:\Users\PC\Desktop\New\QuanLiThuVien\QLTV\QLTV\obj\Debug\QLTV.exe
+C:\Users\PC\Desktop\New\QuanLiThuVien\QLTV\QLTV\obj\Debug\QLTV.pdb
