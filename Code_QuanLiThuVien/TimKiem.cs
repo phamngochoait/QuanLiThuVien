@@ -115,7 +115,8 @@ namespace WindowsFormsApplication1
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-            
+            string sql1 = "Select *from Sach where TenSach like N'%" + cbxTenSachTK.Text.ToString() + "%'";
+            dataGridViewTimKiem.DataSource = ac.TaoBang(sql1);
         }
     }
 }
