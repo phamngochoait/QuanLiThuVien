@@ -29,7 +29,7 @@ using System.Collections.Generic;
             catch (Exception ex) 
             { 
                 MessageBox.Show("Không thể kết nối được với Server\n"+ ex.Message, "Lỗi chương trình"); 
-                //Application.Exit(); 
+               
             } 
         } 
   
