@@ -92,18 +92,13 @@ namespace WindowsFormsApplication1
         }
         private void TheoDoiMuonTra_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.Sach' table. You can move, or remove it, as needed.
+        
             this.sachTableAdapter.Fill(this.quanLyThuVienDataSet1.Sach);
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.PhieuYeuCau' table. You can move, or remove it, as needed.
+      
             this.phieuYeuCauTableAdapter.Fill(this.quanLyThuVienDataSet1.PhieuYeuCau);
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.The' table. You can move, or remove it, as needed.
+        
             this.theTableAdapter.Fill(this.quanLyThuVienDataSet1.The);
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.PhieuYeuCau' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.Sach' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet1.The' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet.PhieuYeuCau' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet.Sach' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet.The' table. You can move, or remove it, as needed.     
+              
 
             //Lấy Mã Thẻ Độc giả đưa vào mượn
             cbxMaTheMuon.DataSource = LayMaTheDocGia();
