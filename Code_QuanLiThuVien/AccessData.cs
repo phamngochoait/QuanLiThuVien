@@ -8,18 +8,17 @@ namespace WindowsFormsApplication1
 using System.Collections.Generic;
 {
     class AccessData
-    {
-         //Thuoc Tinh 
+    { 
         protected string m_connectionString; 
         protected SqlConnection connection; 
         protected SqlDataAdapter da = null; 
         protected SqlCommand command; 
-        //Phuong thuc 
+
         public AccessData() 
         { 
             m_connectionString = "Data Source=ZHANGLI\\SQLEXPRESS;Initial Catalog=D:\\C#\\BAITAP\\QLTV\\QLTV\\QUANLYTHUVIEN.MDF;Integrated Security=True"; 
         } 
-        //Ket Noi 
+    
         public void connect() 
         { 
             try 
@@ -33,7 +32,7 @@ using System.Collections.Generic;
                 //Application.Exit(); 
             } 
         } 
-        //Ngat Ket Noi 
+  
         public void disconnect() 
         { 
             try 
@@ -45,7 +44,7 @@ using System.Collections.Generic;
  
                 MessageBox.Show(ex.Message);             } 
         } 
-        //Lay ra du lieu ra table 
+
         public DataTable TaoBang(String sqlString) 
         { 
             connect(); 
@@ -55,7 +54,7 @@ using System.Collections.Generic;
             disconnect(); 
             return ds; 
         } 
-        //Dung cho cac thao tac insert, delete, update 
+     
         public void ExcuteNonQuery(string sqlString) 
         { 
             connect(); 
@@ -63,7 +62,7 @@ using System.Collections.Generic;
             command.ExecuteNonQuery(); 
             disconnect(); 
         } 
-        //Lay 1 gia tri du lieu ra 
+
         public object executeScalar(string sqlString) 
         { 
             connect(); 
