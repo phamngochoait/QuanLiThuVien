@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         
         private void ThongKe_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'quanLyThuVienDataSet.TacGia' table. You can move, or remove it, as needed.
+          
             this.tacGiaTableAdapter.Fill(this.quanLyThuVienDataSet.TacGia);
             string sql1 = "Select COUNT(*) from Sach";
             string sql2 = "Select COUNT(*) from DocGia";
