@@ -41,7 +41,7 @@ namespace WindowsFormsApplication1
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult traloi = MessageBox.Show("Bạn có muốn thoát không ?", "Thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult traloi = MessageBox.Show("Bạn muốn thoát không ?", "Thoát", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (traloi == DialogResult.OK)
             {
                 e.Cancel=false;
